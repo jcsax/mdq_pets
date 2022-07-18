@@ -1,0 +1,122 @@
+<!DOCTYPE HTML>
+<!--
+	Verti by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+{% load static %}
+<html>
+	<head>
+        <title>
+        {% block title %}
+        {% endblock %}
+    </title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link type = "text/css" href="static/assets/css/main.css" rel="stylesheet"  />
+	</head>
+	<body class="is-preload homepage">
+		<div id="page-wrapper">
+
+			<!-- Header -->
+				<div id="header-wrapper">
+					<header id="header" class="container">
+
+						<!-- Logo -->
+							<div id="logo">
+								<h1><a href="/index/">MDQ-Pets</a></h1>
+								<span>by Joan Camarotta</span>
+							</div>
+
+						<!-- Nav -->
+							<nav id="nav">
+								<ul>
+									<li class="current"><a href="/index/">Inicio</a></li>
+                                    {% if request.user.is_authenticated %}
+									<li><a href="/cuenta/perfil/">Bienvenido {{request.user.username}}</a></li>
+									<li><a href="/cuenta/cerrar-sesion/">Salir</a></li>
+                                    {% else %}
+                                    <li><a href="/cuenta/iniciar-sesion/">Iniciar Sesión</a></li>
+									<li><a href="/cuenta/registrarse/">Registrate</a></li>
+                                    {% endif %}
+								</ul>
+							</nav>
+
+					</header>
+				</div>
+{% block content%}
+{% endblock %}
+
+			<!-- Footer -->
+				<div id="footer-wrapper">
+					<footer id="footer" class="container">
+						<div class="row">
+							<div class="col-3 col-6-medium col-12-small">
+
+								<!-- Links -->
+									<section class="widget links">
+										<h3>Sponsors</h3>
+										<ul class="style2">
+                                            <li><a target="_blank"href="https://www.per-ros.com/">Per-Ros Accesorios Para Mascotas</a></li>
+											<li><a>Roiald Canning</a></li>
+											<li><a>Alimento Siegurd</a></li>
+											<li><a>PetShop Lo de Lola</a></li>
+										</ul>
+									</section>
+
+							</div>
+							<div class="col-3 col-6-medium col-12-small">
+
+								<!-- Links -->
+									<section class="widget links">
+										<h3>Acá vas a encontrar:</h3>
+										<ul class="style2">
+											<li>Paseadores</li>
+                                            <li>PetShops</li>
+                                            <li>Veterinarias</li>
+                                            <li>y más!</li>
+										</ul>
+									</section>
+
+							</div>
+							<div class="col-3 col-6-medium col-12-small">
+
+								<!-- Contact -->
+									<section class="widget contact last">
+										<h3>Contact Us</h3>
+										<ul>
+											<li><a target="_blank" href="https://www.linkedin.com/in/joan-camarotta-816b95172/" class="icon brands fa-linkedin"><span class="label">LinkedIn</span></a></li>
+											<li><a target="_blank" href="https://jcsax.github.io/" class="icon brands fa-github"><span class="label">GitHub</span></a></li>
+										</ul>
+										<p>9 de Julio 3000<br />
+										Mar del Plata, CP 7600<br />
+										(+549) 223 5111111</p>
+									</section>
+
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-12">
+								<div id="copyright">
+									<ul class="menu">
+										<li>&copy; Joan Camarotta. All rights reserved</li><li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
+									</ul>
+								</div>
+							</div>
+						</div>
+					</footer>
+				</div>
+
+			</div>
+
+		<!-- Scripts -->
+
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/jquery.dropotron.min.js"></script>
+			<script src="assets/js/browser.min.js"></script>
+			<script src="assets/js/breakpoints.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<script src="assets/js/main.js"></script>
+
+	</body>
+</html>

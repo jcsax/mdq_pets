@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}
+Perfil
+{% endblock %}
+
+{% block content %}
+<div id="banner-wrapper">
+  <div id="banner" class="box container">
+      <div class="row">
+          <div class="col-7 col-12-medium">
+              <img src="{{ user.profile.image.url }}" class="card-img-top" style="border-radius: 50%; border: 5px; height: 200px; width: 200px; position: relative; left: 30%; top: 1%;" alt="..."/>
+              <h2>Hola, somos: {{user.profile.name}}.</h2>
+              <h3>Acerca de nosotros:</h3>
+              <p>{{user.profile.description}}</p>
+              <br>
+              <h3>Estamos en:</h3>
+              <p>{{user.profile.dir}}</p>
+              <h3> Como llegar:</h3>
+              <p>{{user.profile.dir}}</p>
+          <div class="col-5 col-12-medium">
+            <br>
+              <ul>
+                <a class="button" href ="/cuenta/perfil/actualizar/{{user.profile.id}}">Editar</a>
+                  <li><a target="_blank" href="https://www.google.com/maps/place/9+de+Julio+3000,+B7600GZN+Mar+del+Plata,+Provincia+de+Buenos+Aires/@-37.9951582,-57.5511086,17z/data=!3m1!4b1!4m5!3m4!1s0x9584dc015dd802f3:0xd621aa6e8ffefbe9!8m2!3d-37.9951624!4d-57.5489199" 
+                    class="button large icon solid fa-arrow-circle-right">¿sabes como llegar?</a></li>
+              </ul>
+              </div>
+          </div>
+      </div>
+  </div>
+</div>
+{% endblock %}

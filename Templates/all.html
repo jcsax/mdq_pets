@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}
+Locales
+{% endblock %}
+
+{% block content %}
+<br><br><br>
+{{message}}
+<h1 
+class="fw-bopld text-center py-5"> Todos los Locales:
+</h1>
+<div class="container px-8 px-lg-7 mt-5" style="width: 1200px;">
+  <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
+    {% for profile in object_list %}
+      <div class="col mb-5">
+          <div class="card h-120" style="background-color:#d5e1e6">
+              <div class="card-body p-6">
+                  <div class="text-center">
+                      <h3><class="fw-bolder">{{profile.name}}<br></h3>
+                      <p class="card-text"><small class="text-muted">Categoría: {{profile.query}}</small></p>
+                      <p class="card-text"><small class="text-muted">Dirección: {{profile.dir}}</small></p>
+                      <br>
+                      <a href="/locales/{{local.id}}/" class="btn btn-secondary">Ver más</a>
+                  </div>
+              </div>
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+  {% endblock %}
