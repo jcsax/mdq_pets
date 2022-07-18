@@ -5,13 +5,12 @@ Login
 
 {% block content %}
 <h3>{{errors}}</h3>
-    <h2 class="fw-bopld text-center py-5">Complete los campos para iniciar sesion</h2>
-    <form action="" method="POST" style= "position: relative; left: 20%" >
+    <h3 id="logo" style = "position : relative; margin: 2rem;">Complete los campos para iniciar sesión:</h3>
+    <form action="" method="POST" style = "position : relative; margin: 2rem;">
         {% csrf_token %}
-        <table>
-            {{form.as_table}}
-        </table>
+        {{form}}
+        
         <br>
-        <input type="submit" class="btn btn-success" value="Ingresar">
+        <input type="submit" value="Ingresar">
     </form>
 {% endblock %}

@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}
+Locales
+{% endblock %}
+
+{% block content %}
+<h2 
+id="logo" style = "position: relative; margin: 2rem"> Bienvenido a {{local.name}}!
+</h2>
+    <section class="box feature">
+    <a href="#" class="image featured"><img src="{{local.image}}" alt="" /></a>
+    <div class="inner">
+        <header>
+        <h2>{{local.name}}</h2>
+        <p><h4>Dirección:</h4>{{local.dir}}</p>
+        </header>
+        <p><h4>Descripción:</h4> {{local.description}}</p>
+        <br>
+        <li><a target="_blank" href="{{local.go}}" 
+            class="button large icon solid fa-arrow-circle-right">¿sabes como llegar?</a></li>
+    </div>
+    </section>
+{% endblock %}

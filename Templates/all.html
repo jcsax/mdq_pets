@@ -1,31 +1,27 @@
-{% extends 'Templates/base.html' %}
+{% extends 'base.html' %}
 {% load static %}
 {% block title %}
 Locales
 {% endblock %}
 
 {% block content %}
-<br><br><br>
 {{message}}
-<h1 
-class="fw-bopld text-center py-5"> Todos los Locales:
-</h1>
-<div class="container px-8 px-lg-7 mt-5" style="width: 1200px;">
-  <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
-    {% for profile in user_list %}
-      <div class="col mb-5">
-          <div class="card h-120" style="background-color:#d5e1e6">
-              <div class="card-body p-6">
-                  <div class="text-center">
-                      <h3><class="fw-bolder">{{user.profile.name}}<br></h3>
-                      <p class="card-text"><small class="text-muted">Categoría: {{user.profile.query}}</small></p>
-                      <p class="card-text"><small class="text-muted">Dirección: {{user.profile.dir}}</small></p>
-                      <br>
-                      <a href="/locales/{{local.id}}/" class="btn btn-secondary">Ver más</a>
-                  </div>
-              </div>
-          </div>
-        </div>
+<h2 
+id="logo" style = "position: relative; margin: 2rem"> Todos los Locales:
+</h2>
+    {% for local in object_list %}
+    <section class="box feature">
+      <a href="#" class="image featured"><img src="images/pic01.jpg" alt="" /></a>
+      <div class="inner">
+        <header>
+          <h2>{{local.name}}</h2>
+          <p><h4>Dirección:</h4>{{local.dir}}</p>
+        </header>
+        <p><h4>Descripción:</h4> {{local.description}}</p>
+        <br>
+        <a href="/negocios/{{local.id}}/" class="button icon fa-file-alt">Más</a>
+      </div>
+    </section>
         {% endfor %}
       </div>
     </div>

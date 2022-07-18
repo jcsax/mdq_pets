@@ -1,13 +1,13 @@
 from django.views.generic import ListView
 from django.shortcuts import render
-from accounts.models import Profile
+from accounts.models import Local
 
 #Inicio:
 def index(request):
     return render(request, 'index.html')
 
-#Ver Perfiles:
-class All_profiles(ListView):
-    model = Profile
+#Ver Locales:
+class Mostrar_Locales(ListView):
+    model = Local
     template_name = 'all.html'
-    queryset = Profile.objects.all()
+    queryset = Local.objects.all()

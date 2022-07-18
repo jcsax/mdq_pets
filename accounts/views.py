@@ -2,12 +2,12 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth import authenticate, login, logout
-from accounts.forms import User_registration_form, Contact_form, Profile_form
+from accounts.forms import User_registration_form, Contact_form, Create_Local_Form, Profile_form
 from django.contrib.auth.decorators import login_required
 #Imports Update_Profile:
-from accounts.models import Profile
+from accounts.models import Profile, Local
 from django.contrib.auth.mixins import LoginRequiredMixin
-from django.views.generic import UpdateView, ListView
+from django.views.generic import UpdateView, DetailView
 from django.urls import reverse
 
 #Modulo Login:
@@ -78,6 +78,26 @@ def contact_view(request):
             data['contact_form'] = contact_full
     return render(request, 'contact_form.html', data)
 
+#Create Local Form:
+@login_required
+def create_local_view(request):
+    data = {
+        'create_local_form': Create_Local_Form()
+    }
+    if request.method == 'POST':
+        create_local = Create_Local_Form(data=request.POST)
+        if create_local.is_valid():
+            create_local.save()
+            data["message.success"] = "Información enviada, una vez verificada se publicará su local!"
+        else:
+            data['create_local_form'] = create_local
+    return render(request, 'local_form.html', data)
+
+#Detalles Local:
+class Ver_Local(DetailView):
+    model = Local
+    templane_name = 'detail_local.html'
+    
 #Perfil de usuario:
 @login_required
 def Profile_view(request):
@@ -86,7 +106,7 @@ def Profile_view(request):
 class Update_profile(LoginRequiredMixin, UpdateView):
     model = Profile
     form = Profile_form
-    template_name = 'edit_profile_view.html'
-    fields = ['name', 'description', 'dir', 'image']
+    template_name = 'edit_profile.html'
+    fields = '__all__'
     def get_success_url(self):
         return reverse('profile')
