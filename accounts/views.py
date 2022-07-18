@@ -7,7 +7,7 @@ from django.contrib.auth.decorators import login_required
 #Imports Update_Profile:
 from accounts.models import Profile
 from django.contrib.auth.mixins import LoginRequiredMixin
-from django.views.generic import UpdateView
+from django.views.generic import UpdateView, ListView
 from django.urls import reverse
 
 #Modulo Login:
@@ -61,7 +61,7 @@ def register_view(request):
 #Logout:
 def logout_view(request):
     logout(request)
-    return redirect('/inicio/')
+    return redirect('/')
 
 #Contact Form:
 @login_required
@@ -90,4 +90,3 @@ class Update_profile(LoginRequiredMixin, UpdateView):
     fields = ['name', 'description', 'dir', 'image']
     def get_success_url(self):
         return reverse('profile')
-
