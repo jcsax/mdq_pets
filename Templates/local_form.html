@@ -10,16 +10,15 @@ Publicar Local
     <h3 id="logo" style = "position : relative; margin: 2rem;">Completa los campos para registrar tu local:</h3>
     <form action="" method="POST" style = "position : relative; margin: 2rem;" enctype="multipart/form-data">
         {% csrf_token %}
-        {{create_local_form}}
+        {{form}}
         <script>
             labels = document.getElementsByTagName('label');
             for (var j = 0; j < labels.length; j++) {   
                 if (labels[j].textContent == "Name:") labels[j].textContent ="Nombre del Local:";
                 if (labels[j].textContent == "Dir:") labels[j].textContent ="Dirección:";
-                if (labels[j].textContent == "Query:") labels[j].textContent ="Tipo:";
+                if (labels[j].textContent == "Shop_type:") labels[j].textContent ="Local:";
                 if (labels[j].textContent == "Description:") labels[j].textContent = "Descripción:";
                 if (labels[j].textContent == "Image:") labels[j].textContent ="Imagen:";
-                if (labels[j].textContent == "Go:") labels[j].textContent ="Como llegar:";
                 };
     </script>
         <br>

@@ -9,7 +9,7 @@ Locales
 id="logo" style = "position: relative; margin: 2rem"> Bienvenido a {{local.name}}!
 </h2>
     <section class="box feature">
-    <a href="#" class="image featured"><img src="{{local.image}}" alt="" /></a>
+    <a href="#" class="image feature"><img src="{{local.image.url}}" alt="" width="800" height="800"/></a>
     <div class="inner">
         <header>
         <h2>{{local.name}}</h2>
@@ -17,8 +17,10 @@ id="logo" style = "position: relative; margin: 2rem"> Bienvenido a {{local.name}
         </header>
         <p><h4>Descripción:</h4> {{local.description}}</p>
         <br>
-        <li><a target="_blank" href="{{local.go}}" 
-            class="button large icon solid fa-arrow-circle-right">¿sabes como llegar?</a></li>
+        <a target="_blank" href="https://www.google.com/search?q=google+maps+mar+del+plata+calle+{{local.dir}}" class="button large icon solid fa-arrow-circle-right">¿sabes como llegar?</a>
+        <br>
+        <br>
+        <a href = "/negocios/" class="button icon fa-file-alt">Vovler al listado</a>
     </div>
     </section>
 {% endblock %}

@@ -1,14 +1,13 @@
 #Imports Login-Register-Logout
 from django.shortcuts import render, redirect
+from django.urls import reverse
 from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth import authenticate, login, logout
-from accounts.forms import User_registration_form, Contact_form, Create_Local_Form, Profile_form
+from accounts.forms import User_registration_form, Contact_form
 from django.contrib.auth.decorators import login_required
-#Imports Update_Profile:
-from accounts.models import Profile, Local
 from django.contrib.auth.mixins import LoginRequiredMixin
-from django.views.generic import UpdateView, DetailView
-from django.urls import reverse
+from django.views.generic import CreateView
+from accounts.models import Local
 
 #Modulo Login:
 def login_view(request):
@@ -20,12 +19,10 @@ def login_view(request):
             user = authenticate(username = username, password = password)
             if user is not None:
                 login(request, user)
-                context = {'message':f'Hola de nuevo {username}'}
-                return render(request, 'index.html', context = context)
+                return render(request, 'index.html')
             else:
-                context = {'errors':'Tus datos son incorrectos!'}
                 form = AuthenticationForm()
-                return render(request, 'auth/login.html', context = context)
+                return render(request, 'auth/login.html')
         else:
             errors = form.errors
             form = AuthenticationForm()
@@ -46,8 +43,7 @@ def register_view(request):
             password = form.cleaned_data['password1']
             user = authenticate(username = username, password = password)
             login(request, user)
-            context = {'message':f'Usuario creado correctamente, bienvenido {username}'}
-            return render(request, 'index.html', context = context)
+            return render(request, 'index.html')
         else:
             errors = form.errors
             form = User_registration_form()
@@ -79,34 +75,9 @@ def contact_view(request):
     return render(request, 'contact_form.html', data)
 
 #Create Local Form:
-@login_required
-def create_local_view(request):
-    data = {
-        'create_local_form': Create_Local_Form()
-    }
-    if request.method == 'POST':
-        create_local = Create_Local_Form(data=request.POST)
-        if create_local.is_valid():
-            create_local.save()
-            data["message.success"] = "Información enviada, una vez verificada se publicará su local!"
-        else:
-            data['create_local_form'] = create_local
-    return render(request, 'local_form.html', data)
-
-#Detalles Local:
-class Ver_Local(DetailView):
+class Create_Local(LoginRequiredMixin, CreateView):
     model = Local
-    templane_name = 'detail_local.html'
-    
-#Perfil de usuario:
-@login_required
-def Profile_view(request):
-    return render(request, 'profile.html')
-#Editar Perfil:
-class Update_profile(LoginRequiredMixin, UpdateView):
-    model = Profile
-    form = Profile_form
-    template_name = 'edit_profile.html'
+    template_name = 'local_form.html'
     fields = '__all__'
     def get_success_url(self):
-        return reverse('profile')
+        return reverse('index')

@@ -5,6 +5,7 @@ Login
 
 {% block content %}
 <h3>{{errors}}</h3>
+<h3>{{message}}</h3>
     <h3 id="logo" style = "position : relative; margin: 2rem;">Complete los campos para iniciar sesión:</h3>
     <form action="" method="POST" style = "position : relative; margin: 2rem;">
         {% csrf_token %}

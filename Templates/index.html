@@ -15,73 +15,41 @@ MDQ-Pets
 							</div>
 							<div class="col-5 col-12-medium">
 								<ul>
+									{% if request.user.is_authenticated %}
 									<li><a href="/cuenta/registrar-local/" class="button large icon solid fa-arrow-circle-right">Registra tu Negocio</a></li>
-									<li><a href="#" class="button alt large icon solid fa-question-circle">Buscá lo que necesitas!</a></li>
+									{% else %}
+									<li><a href= "/cuenta/registrarse" class="button large icon solid fa-arrow-circle-right">Registrate para sumar tu Negocio</a></li>
+									{% endif %}
+									<li><a href="/negocios/" class="button alt large icon solid fa-question-circle">Buscá lo que necesitas!</a></li>
 								</ul>
 							</div>
 						</div>
 					</div>
 				</div>
+<!-- Features -->
+{% for local in inicio %}
+	<div id="features-wrapper">
+		<div class="container">
+			<div class="row">
+				<div class="col-4 col-6-medium">
 
-			<!-- Features -->
-				<div id="features-wrapper">
-					<div class="container">
-						<div class="row">
-							<div class="col-4 col-12-medium">
-
-								<!-- Box -->
-									<section class="box feature">
-										<a href="#" class="image featured"><img src="images/pic01.jpg" alt="" /></a>
-										<div class="inner">
-											<header>
-												<h2>Veterinaria Alejandro Giannoccaro</h2>
-												<p>Veterinaria y Peluquería</p>
-											</header>
-											<p>Un excelente profeisonal, cuenta con ecografo. Super recomendable</p>
-											<br>
-											<a href="#" class="button icon fa-file-alt">Más</a>
-										</div>
-									</section>
-
-							</div>
-							<div class="col-4 col-12-medium">
-
-								<!-- Box -->
-									<section class="box feature">
-										<a href="#" class="image featured"><img src="images/pic02.jpg" alt="" /></a>
-										<div class="inner">
-											<header>
-												<h2>La Huella Recreación</h2>
-												<p>Guardería y Recreación canina</p>
-											</header>
-											<p>Un paseo diferente, para que tu mascota sociabilice y aproveche de un espacio al aire libre, seguro y cuidado por una excelente persona.</p>
-											<br>
-											<a href="#" class="button icon fa-file-alt">Más</a>
-										</div>
-									</section>
-
-							</div>
-							<div class="col-4 col-12-medium">
-
-								<!-- Box -->
-									<section class="box feature">
-										<a href="#" class="image featured"><img src="images/pic03.jpg" alt="" /></a>
-										<div class="inner">
-											<header>
-												<h2>Lo de Lola</h2>
-												<p>PetShop</p>
-											</header>
-											<p>PetShop completo, con muy buenos precios y excelente asesoramiento</p>
-											<br>
-											<a href="#" class="button icon fa-file-alt">Más</a>
-										</div>
-									</section>
-
-							</div>
-						</div>
-					</div>
-				</div>
-
+		<!-- Box -->
+			<section class="box feature">
+				<a href="#" class="image featured"><img src="{{local.image.url}}" alt="" /></a>
+				<div class="inner">
+					<header>
+						<h2>{{local.name}}</h2>
+						<h4>{{local.shop_type}}</h4>
+					</header>
+					<p>{{local.description}}</p>
+					<br>
+					<a href="/negocios/detalle/{{local.id}}/" class="button icon fa-file-alt">Más</a>
+			</section>
+		</div>
+	</div>
+</div>
+{% endfor %}
+</div>
 			<!-- Main -->
 				<div id="main-wrapper">
 					<div class="container">

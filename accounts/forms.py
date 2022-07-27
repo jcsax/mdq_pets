@@ -1,7 +1,7 @@
 from django import forms
 from django.contrib.auth.models import User
 from django.contrib.auth.forms import UserCreationForm
-from accounts.models import Contact, Local, Profile
+from accounts.models import Contact, Local
 
 
 #Creación de usuario:
@@ -19,12 +19,6 @@ class User_registration_form(UserCreationForm):
 class Contact_form(forms.ModelForm):
     class Meta:
         model = Contact
-        fields = '__all__'
-
-#Formulario para actualizar perfil:
-class Profile_form(forms.ModelForm):
-    class Meta:
-        model = Profile
         fields = '__all__'
 
 #Formulario para crear local:

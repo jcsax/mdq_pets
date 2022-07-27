@@ -33,7 +33,7 @@
 								<ul>
 									<li class="current"><a href="/">Inicio</a></li>
                                     {% if request.user.is_authenticated %}
-									<li><a href="/cuenta/perfil/">Bienvenido {{request.user.username}}</a></li>
+									<li><a href="#">Bienvenido {{request.user.username}}</a></li>
 									<li><a href="/cuenta/cerrar-sesion/">Salir</a></li>
                                     {% else %}
                                     <li><a href="/cuenta/iniciar-sesion/">Iniciar Sesión</a></li>

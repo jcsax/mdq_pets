@@ -43,7 +43,7 @@ BASE_APPS = [
 THIRD_APPS = []
 
 MY_APPS = [
-    'accounts',
+    'accounts.apps.AccountsConfig',
 ]
 
 INSTALLED_APPS = THIRD_APPS + MY_APPS + BASE_APPS
